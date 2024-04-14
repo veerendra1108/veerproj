@@ -27,12 +27,12 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: veeradocker1108/projimage:latest
+          tags: veeradocker1108/projimage
 
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@master
         with:
-          project_id: your-gcp-project-id
+          project_id: enduring-honor-287715
           service_account_key: ${{ secrets.GKE_SA_KEY }}
           export_default_credentials: true
 
@@ -42,7 +42,7 @@ jobs:
 
       - name: Get GKE credentials
         run: |
-          gcloud container clusters get-credentials your-cluster-name --zone your-cluster-zone
+          gcloud container clusters get-credentials testcluster --zone us-central1-c
 
       - name: Deploy to GKE
         run: |
