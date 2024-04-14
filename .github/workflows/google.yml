@@ -1,0 +1,57 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # or your default branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./apps
+          file: ./apps/Dockerfile
+          push: true
+          tags: veeradocker1108/projimage
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          project_id: enduring-honor-287715
+          service_account_key: ${{ secrets.GKE_SA_KEY }}
+          export_default_credentials: true
+
+      - name: Install gke-gcloud-auth-plugin
+        run: |
+           gcloud components update
+           gcloud components install gke-gcloud-auth-plugin
+
+      - name: Configure Docker for GKE
+        run: |
+          gcloud auth configure-docker
+
+      - name: Get GKE credentials
+        run: |
+          gcloud container clusters get-credentials testcluster --zone us-central1-c
+
+      - name: Deploy to GKE
+        run: |
+          kubectl apply -f apps/role.yaml
+          kubectl apply -f apps/rolebinding.yaml
+          kubectl apply -f apps/deployment.yaml
+          kubectl apply -f apps/service.yaml
