@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+   name: lbsvc
+   namespace: saj
+spec:
+  type: LoadBalancer
+  selector:
+    app: myapp
+    type: frontend
+  ports:
+    - nodePort: 31768
+      port: 5000
+      targetPort: 5000   

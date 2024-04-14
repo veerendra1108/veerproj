@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sajdeploy
+  namespace: saj
+  labels:
+    concept: deploy
+spec:
+  templates:
+     metadata:
+        labels:
+          app: myapp
+          type: frontend
+     spec:
+       containers:
+          - name: mycont
+            image: veeradocker1108/sajimage
+  replicas: 3
+  selector:
+    matchLabels:
+        app: myapp
+        type: frontend         
