@@ -30,7 +30,7 @@ jobs:
           tags: veeradocker1108/projimage
 
       - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@master
+        uses: google-github-actions/setup-gcloud@v0.2.0
         with:
           project_id: enduring-honor-287715
           service_account_key: ${{ secrets.GKE_SA_KEY }}
