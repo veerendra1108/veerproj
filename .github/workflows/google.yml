@@ -51,5 +51,7 @@ jobs:
 
       - name: Deploy to GKE
         run: |
+          kubectl apply -f apps/role.yaml
+          kubectl apply -f apps/rolebinding.yaml
           kubectl apply -f apps/deployment.yaml
           kubectl apply -f apps/service.yaml
