@@ -14,7 +14,7 @@ spec:
      spec:
        containers:
           - name: mycont
-            image: veeradocker1108/sajimage
+            image: veeradocker1108/projimage
   replicas: 3
   selector:
     matchLabels:
