@@ -24,8 +24,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: /apps/Dockerfile
+          context: ./apps
+          file: ./apps/Dockerfile
           push: true
           tags: veeradocker1108/projimage
 
