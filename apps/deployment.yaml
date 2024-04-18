@@ -6,7 +6,7 @@ metadata:
   labels:
     concept: deploy
 spec:
-  templates:
+  template:
      metadata:
         labels:
           app: myapp
