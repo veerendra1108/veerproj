@@ -51,4 +51,4 @@ jobs:
 
       - name: Deploy to GKE
         run: |
-          helm install sajrel ./sajchart/sajchart
+          helm install sajrel ./sajchart
