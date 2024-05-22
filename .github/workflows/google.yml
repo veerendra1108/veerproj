@@ -51,5 +51,4 @@ jobs:
 
       - name: Deploy to GKE
         run: |
-          kubectl apply -f apps/deployment.yaml
-          kubectl apply -f apps/service.yaml
+          helm install sajrel ./sajchart
