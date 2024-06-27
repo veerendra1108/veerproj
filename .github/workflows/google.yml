@@ -51,4 +51,5 @@ jobs:
 
       - name: Deploy to GKE
         run: |
-          helm install sajrel ./apps/sajchart
+          kubectl create ns sajith
+          helm install sajrel ./apps/sajchart -n sajith
