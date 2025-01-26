@@ -27,7 +27,7 @@ jobs:
           context: ./apps
           file: ./apps/Dockerfile
           push: true
-          tags: veeradocker1108/projimage
+          tags: veeradocker1108/sarahimageforproj
 
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v0.2.0
@@ -47,7 +47,7 @@ jobs:
 
       - name: Get GKE credentials
         run: |
-          gcloud container clusters get-credentials testcluste --zone us-central1-c
+          gcloud container clusters get-credentials testcluster --zone us-central1-c
 
       - name: Deploy to GKE
         run: |
