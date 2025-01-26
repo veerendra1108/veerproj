@@ -47,9 +47,11 @@ jobs:
 
       - name: Get GKE credentials
         run: |
-          gcloud container clusters get-credentials testcluster --zone us-central1-c
+          gcloud container clusters get-credentials testcluster --zone us-central1
 
       - name: Deploy to GKE
         run: |
-          kubectl create ns sajith
-          helm install sajrel ./apps/sajchart -n sajith
+          kubectl create ns sarah
+          kubectl create -f apps/deployment.yaml
+          kubectl create -f apps/service.yaml
+          #helm install sajrel ./apps/sajchart -n sajith
