@@ -51,7 +51,7 @@ jobs:
 
       - name: Deploy to GKE
         run: |
-          kubectl create ns sarah
+          #kubectl create ns sarah
           kubectl create -f apps/deployment.yaml
           kubectl create -f apps/service.yaml
           #helm install sajrel ./apps/sajchart -n sajith
