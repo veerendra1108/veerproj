@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sajdeploy
-  namespace: saj
+  name: sarahdeploy
+  namespace: sarah
   labels:
     concept: deploy
 spec:
@@ -14,7 +14,7 @@ spec:
      spec:
        containers:
           - name: mycont
-            image: veeradocker1108/projimage
+            image: veeradocker1108/sarahimageforproj
   replicas: 3
   selector:
     matchLabels:
